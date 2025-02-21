@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Const } from './constant';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -15,8 +16,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it(`should return "${Const.HELLO_WORLD}"`, () => {
+      expect(appController.getHello()).toBe(Const.HELLO_WORLD);
     });
   });
 });
