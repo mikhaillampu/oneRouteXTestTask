@@ -17,8 +17,9 @@ export class TaskService {
   ) { }
 
   async createTask(userId: number, dto: CreateTaskDTO): Promise<Task> {
-    const task = await this.repo.insert({ ...dto, userId });
-    return task.raw[0];
+    const task = this.repo.create({ ...dto, userId });
+    await this.repo.save(task);
+    return task;
   }
 
   async deleteTask(userId: number, id: number): Promise<true> {

@@ -15,7 +15,7 @@ export class AuthService {
   async login(creds: CreateUserDto): Promise<IAuthToken> {
     const user = await this.userService.findOne(creds);
 
-    if (!user) throw new NotFoundException([Const.err.USER_NOT_FOUND]);
+    if (!user) throw new NotFoundException(Const.err.USER_NOT_FOUND);
 
     const passIsOk = await this.userService.checkHash(creds.pass, user);
     if (!passIsOk) throw new UnauthorizedException();
